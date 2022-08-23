@@ -27,7 +27,7 @@ class IsAnsweredFilter(admin.SimpleListFilter):
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
-    list_filter = ('user', IsAnsweredFilter)
+    list_filter = ('user', IsAnsweredFiltezr)
     list_display = ['__str__', 'user', 'is_answered']
 
     def is_answered(self, obj) -> bool:
