@@ -31,15 +31,3 @@ class PatientCreationForm(ModelForm):
         model = PatientUser
         fields = ['phone_number', 'national_id']
 
-
-class TransactionForm(forms.Form):
-    description = forms.CharField(max_length=200, required=True)
-    mobile = forms.CharField(max_length=11, required=False)
-    email = forms.EmailField(required=False)
-    amount = forms.IntegerField(required=True)
-
-
-class CreateTicketForm(ModelForm):
-    class Meta:
-        model = Ticket
-        fields = ['request']
