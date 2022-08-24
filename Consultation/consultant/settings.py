@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'log_viewer',
     'crispy_forms',
 
-    'website',
+    'template',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'website.context_processors.user_type_processor'
+                'template.context_processors.user_type_processor'
             ],
         },
     },
@@ -135,7 +135,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
-    BASE_DIR / "website/statics",
+    BASE_DIR / "template/statics",
 ]
 
 # Default primary key field type
