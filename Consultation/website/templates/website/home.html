@@ -1,0 +1,66 @@
+{% extends 'website/base.html' %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'website/home.css' %}"/>
+{% endblock %}
+
+
+{% block content %}
+<div id="bglogin-left"></div>
+
+<div class="main">
+    <section class="info-container mx-3">
+        <div class="container px-0">
+            <div class="info-content p-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="get">
+                            {{ filter_form.form }}
+                            <button class="btn btn-primary" type="submit">Filter</button>
+                        </form>
+                        <div class="free-time-container row mt-4">
+                            {% for free_time in object_list %}
+                                <div class="col-4 p-2">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h1>{{ free_time.doctor }}</h1>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <h4 class="card-title"><h5>Start Time:</h5>{{ free_time.start_time }}</h4>
+                                            <h4 class="card-text"><h5>Duration:</h5> {{ free_time.duration }} </h4>
+                                            <h4 class="card-text"><h5>Price:</h5> {{ free_time.price }} </h4>
+                                            <br>
+                                            {% if is_patient %}
+                                            <form method="post" action="{% url 'website:reserved' free_time.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-success">Reserve</button>
+                                        </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {#    {% for visit in object_list %}#}
+                        {#        #}
+                        {#    {% endfor %}#}
+                        {% for message in messages %}
+                        <div class="container-fluid p-0">
+                          <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="True">&times;</span>
+                            </button>
+                            {{ message }}
+                          </div>
+                        </div>
+                        {% endfor %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
