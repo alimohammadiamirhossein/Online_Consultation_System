@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Title{% endblock %}</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'website/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!--<link rel="stylesheet" href="{% static 'website/bootstrap-icons.css' %}">-->
+
+    <link rel="stylesheet" href="{% static 'website/style.css' %}"/>
+    {% block extra_head %} {% endblock %}
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        Sharif Online Consultation System
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% if request.user.is_authenticated %}
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'website:doctor_signup' %}">Doctor Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'website:patient_signup' %}">Patient Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'website:login' %}">Login</a>
+                </li>
+            {% endif %}
+
+            <li class="nav-item dropdown">
+
+            </li>
+        </ul>
+        {% if request.user.is_authenticated %}
+            <div class="nav-item">
+                <a class="bi bi-chat-right-quote text-purple" href="{% url 'website:tickets' %}"></a>
+            </div>
+            <div class="dropdown">
+
+                <a class="nav-link dropdown-toggle text-purple" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    {{ request.user.first_name }}
+                    {{ request.user.last_name }}
+                    <i class="bi bi-person-fill"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                    <div class="dropdown-divider"></div>
+                    {% if is_patient %}
+                        <a class="dropdown-item" href="/patient_dashboard">Personal Page</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/patient_visits">Visits</a>
+                    {% endif %}
+                    {% if is_doctor %}
+                        <a class="dropdown-item" href="/doctor_dashboard">Personal Page</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/add_free_time">Add Free Time</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/doctor_visits">Visits</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</nav>
+<div class="">
+    {% if message %}
+        <div class="m-3 fixed-bottom w-25 alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

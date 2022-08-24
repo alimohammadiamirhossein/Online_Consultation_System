@@ -1,0 +1,7 @@
+.visit-container {
+    display: flex;
+}
+
+.visit {
+    border: 2px solid black;
+}

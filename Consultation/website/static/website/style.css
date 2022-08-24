@@ -1,0 +1,82 @@
+.bi {
+    font-size: 1.5rem !important;
+}
+.dropdown-item {
+	padding: .5rem 1.5rem;
+}
+.dropdown-divider {
+	margin: 0;
+}
+.btn-purple {
+	background: #1f1f70;
+	color: #fff;
+	border: none;
+	padding: 15px 40px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	cursor: pointer;
+}
+.btn-purple:hover {
+	background: #04044d;
+	color: #fff;
+}
+.btn-purple.btn-sm {
+	padding: .5rem 1.5rem;
+}
+.text-purple {
+    color: #1f1f70;
+}
+.text-purple:hover {
+    color: #04044d;
+}
+#bglogin-left {
+    background-color: #cce4ff;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+}
+.navbar {
+	z-index: 2;
+}
+.main {
+    background: #f8f8f8;
+    min-height: calc(100vh - 68px);
+    padding: 70px 0;
+    display: flex;
+    justify-content: center;
+}
+.info-container {
+    z-index: 1;
+    position: relative;
+    min-width: 85%;
+}
+.container {
+	width: 900px;
+	background: #f8f9fa;
+	margin: 0 auto;
+	box-shadow: 0px 15px 16.83px 0.17px rgba(0,0,0,0.05);
+	-webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0,0,0,0.05);
+	border-radius: 20px;
+	-webkit-border-radius: 20px;
+	max-width: 90%;
+}
+.container.container-lg {
+    width: 1500px;
+}
+.info-content {
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+}
+.info-label{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.info-input {
+    font-size: 1.1em;
+}
+.account-img {
+    max-width: 100%;
+    padding: 15px;
+}
