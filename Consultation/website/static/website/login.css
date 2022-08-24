@@ -1,0 +1,94 @@
+.navbar {
+	z-index: 2;
+}
+#bglogin-left {
+    background-color: #cce4ff;
+    position: fixed;
+    height: 100vh;
+    width: 50%;
+    top: 0;
+}
+#bglogin-right {
+    background-color: #1f1f70;
+    position: fixed;
+    height: 100vh;
+    width: 50%;
+    transform: translateX(100%);
+    top: 0;
+}
+.container {
+	width: 900px;
+	background: #fff;
+	margin: 0 auto;
+	box-shadow: 0px 15px 16.83px 0.17px rgba(0,0,0,0.05);
+	-webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0,0,0,0.05);
+	border-radius: 20px;
+	-webkit-border-radius: 20px;
+	height: 100%;
+	max-width: 90%;
+}
+.sign-up .container {
+    width: 1500px;
+}
+.main {
+    background: #f8f8f8;
+    min-height: calc(100vh - 68px);
+    padding: 70px 0;
+    display: flex;
+    justify-content: center;
+}
+.sign-in {
+    z-index: 1;
+    position: relative;
+    min-width: 70%;
+}
+.sign-up {
+    z-index: 1;
+    position: relative;
+    min-width: 85%;
+}
+.signin-content {
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+}
+.signin-form {
+    display: flex;
+    justify-content: center;
+}
+.signin-form, .signin-image {
+    width: 50%;
+    overflow: hidden;
+}
+.signin-form-container {
+    width: 400px;
+    max-width: 70%;
+    margin: auto;
+    padding: 50px 0;
+}
+.signin-image {
+    background-color: #e6f2ff;
+    border-radius: 0 20px 20px 0;
+    overflow: visible;
+}
+.signin-image figure {
+    margin: 0;
+    display: flex !important;
+    left: -50px;
+    position: relative;
+    width: calc(100% + 40px);
+    height: 100%;
+}
+.from-submit {
+    margin-top: 30px;
+    background: #1f1f70;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    cursor: pointer;
+}
+.from-submit:hover {
+	background: #04044d;
+}
