@@ -1,0 +1,38 @@
+{% extends 'website/base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'website/login.css' %}"/>
+{% endblock %}
+{% block content %}
+<div id="bglogin-right"></div>
+<div id="bglogin-left"></div>
+<div class="main">
+    <section class="sign-in mx-3">
+        <div class="container px-0">
+            <div class="signin-content">
+                <div class="signin-form">
+                    <div class="signin-form-container">
+                        <h1 class="mt-2 mb-5 text-center">
+                            Login
+                        </h1>
+                        <form method="post">
+                            {% csrf_token %}
+
+                            {{ form|crispy }}
+                            <button type="submit" class="btn btn-block login-btn from-submit">Login</button>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="signin-image">
+                    <figure>
+                        <img src="{% static 'website/images/Indira_BackOffice.svg' %}" alt="sign up image" />
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
