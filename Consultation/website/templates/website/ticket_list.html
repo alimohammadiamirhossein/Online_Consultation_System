@@ -1,0 +1,38 @@
+{% extends 'website/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}Tickets{% endblock %}
+{% load static %}
+{% block content %}
+<div id="bglogin-left"></div>
+
+<div class="main">
+    <section class="info-container mx-3">
+        <div class="container px-0">
+            <div class="p-3">
+                {% for obj in object_list %}
+
+                    <div class="card card-body w-100 mb-5">
+                        <p class="card card-body bg-light text-right w-75 ml-auto">
+                            {{ obj.request }}
+                        </p>
+
+                            {% if obj.response|length %}
+                                <p class="card card-body bg-success w-75 text-right right-">{{ obj.response }}</p>
+                            {% else %}
+                                <p class="card card-body bg-warning w-75 text-right right-">در انتظار پاسخ</p>
+                            {% endif %}
+
+                    </div>
+                {% endfor %}
+                <hr />
+                <form method="post" action="{% url 'website:create_ticket' %}">
+                    {% csrf_token %}
+                    {{ create_form|crispy }}
+                    <input type="submit" value="Submit new ticket" class="btn btn-purple">
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

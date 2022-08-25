@@ -1,0 +1,54 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+<div id="bglogin-left"></div>
+
+<div class="main">
+    <section class="info-container mx-3">
+        <div class="container px-0">
+            <div class="p-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-signin" action="pay" method="POST">
+                            {% csrf_token %}
+                            <div class="text-center mb-4">
+                                <img class="mb-4" src="{% static 'website/images/zarinpal.png' %}" alt="" width="300" height="72">
+                                <!-- <h1 class="h3 mb-3 font-weight-normal">پرداختی امن</h1>
+                                <p> با درگاه بانکی زرین پال </p> -->
+                            </div>
+
+                            <div class="form-label-group">
+                                <input name="email" type="email" id="inputEmail" class="form-control text-right" placeholder="ایمیل" >
+                                <label for="inputEmail" class="text-right">ایمیل</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input name="mobile" type="text" id="inputMobile" class="form-control text-right" placeholder="تلفن همراه" >
+                                <label for="inputMobile" class="text-right">تلفن همراه</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input name="amount" type="text" id="inputCash" class="form-control text-right" placeholder="مبلغ (تومان)" required>
+                                <label for="inputCash" class="text-right">مبلغ (تومان)</label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputDescription" class="text-right float-right">:توضیحات</label>
+                                <textarea name="description" id="inputDescription" class="form-control text-right" rows="4"></textarea>
+                            </div>
+
+                            <button class="btn btn-lg btn-purple btn-block" type="submit">پرداخت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+
+{% endblock %}
