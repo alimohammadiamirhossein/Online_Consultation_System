@@ -12,8 +12,8 @@
 
 <div class="main">
     <section class="info-container mx-3">
-        <div class="container px-0">
-            <div class="info-content p-3">
+        <div class="container container-lg px-0">
+            <div class="p-3">
                 <div class="row">
                     <div class="col-md-12">
                         <form method="get">
@@ -22,10 +22,10 @@
                         </form>
                         <div class="free-time-container row mt-4">
                             {% for free_time in object_list %}
-                                <div class="col-4 p-2">
+                                <div class="col-4 mb-3">
                                     <div class="card">
-                                        <div class="card-header">
-                                            <h1>{{ free_time.doctor }}</h1>
+                                        <div class="card-header text-center">
+                                            <h4>{{ free_time.doctor }}</h4>
                                         </div>
 
                                         <div class="card-body">
@@ -36,7 +36,7 @@
                                             {% if is_patient %}
                                             <form method="post" action="{% url 'website:reserved' free_time.id %}">
                                             {% csrf_token %}
-                                            <button type="submit" class="btn btn-success">Reserve</button>
+                                            <button type="submit" class="btn btn-purple btn-block btn-sm mt-3">Reserve</button>
                                         </form>
                                             {% endif %}
                                         </div>

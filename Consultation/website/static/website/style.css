@@ -10,7 +10,7 @@
 .btn-purple {
 	background: #1f1f70;
 	color: #fff;
-	border: none;
+	border: 1px solid #1f1f70;
 	padding: 15px 40px;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -22,6 +22,10 @@
 }
 .btn-purple.btn-sm {
 	padding: .5rem 1.5rem;
+}
+.btn-sm {
+	padding: .5rem 1.5rem !important;
+	border-radius: 5px;
 }
 .text-purple {
     color: #1f1f70;
