@@ -1,0 +1,53 @@
+{% extends 'website/base.html' %}
+{% block content %}
+
+<div id="bglogin-left"></div>
+
+<div class="main">
+    <section class="info-container mx-3">
+        <div class="container container-lg px-0">
+            <div class="p-3">
+                <div class="free-time-container row mt-4">
+                {% for visit in list %}
+                            <div class="col-4 mb-3">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <h3>{{ visit.patient }}</h3>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <h4 class="card-title"><h5 style="display:inline;">Start Time: </h5>{{ visit.start_time }}</h4>
+                                        <h4 class="card-text"><h5 style="display:inline;">Duration:</h5> {{ visit.duration }} </h4>
+                                        {% if visit.state == 'N' %}
+                                        <h4 class="card-text"><h5 style="display:inline;">Status:</h5> Normal </h4>
+                                        {% endif %}
+                                        {% if visit.state == 'D' %}
+                                        <h4 class="card-text"><h5 style="display:inline;">Status:</h5> Cancelled by Doctor </h4>
+                                        {% endif %}
+                                        {% if visit.state == 'P' %}
+                                        <h4 class="card-text"><h5 style="display:inline;">Status:</h5> Cancelled by Patient </h4>
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-center">
+                                            <div class="col-6">
+                                                <a class="btn btn-purple btn-sm btn-block" href="/doctor_dashboard">Chat</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <form method="post" action="{% url 'website:doctor_cancel_visit' visit.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-danger btn-sm btn-block">Cancel</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
